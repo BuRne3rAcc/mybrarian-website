@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="parchment">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Mybrarian | Organize your personal library in one place.</title>
+  <meta name="description" content="Mybrarian is the personal workspace for your physical library. Organize your books, arrange digital shelves, track your collection budget, and ask your private AI Librarian." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#6A0715" />
+  <link rel="canonical" href="https://mybrarian.com/" />
+
+  <!-- Open Graph / Social Sharing (LinkedIn, WhatsApp, iMessage) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mybrarian" />
+  <meta property="og:url" content="https://mybrarian.com/" />
+  <meta property="og:title" content="Mybrarian | Organize your personal library in one place." />
+  <meta property="og:description" content="Organize your physical books, arrange drag-and-drop digital shelves, track your collection budget, and ask your private AI Librarian." />
+  <meta property="og:image" content="https://mybrarian.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Mybrarian - Organize your personal library in one place." />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mybrarian | Personal Library & Digital Bookshelves" />
+  <meta name="twitter:description" content="Organize your physical books, arrange drag-and-drop digital shelves, track your collection budget, and ask your private AI Librarian." />
+  <meta name="twitter:image" content="https://mybrarian.com/og-image.png" />
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236A0715'/%3E%3Cpath d='M24 26c10 1 19 5 26 13 7-8 16-12 26-13v42c-10 1-19 4-26 11-7-7-16-10-26-11V26z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+
+  <!-- Structured Data (JSON-LD for Search Engines) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mybrarian",
+    "url": "https://mybrarian.com/",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web",
+    "description": "Mybrarian is the personal workspace for your physical library. Organize your books, arrange digital shelves, track your collection budget, and ask your private AI Librarian.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+
+  <!-- Single Clean Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       MASTER BRAND PALETTE (60-30-10 HARMONY + THEME PREVIEW SUPPORT)
+       ========================================================================== */
+    :root,
+    [data-theme="parchment"] {
+      --bg-canvas: #F7F5F0;         /* Archival Cream (60% Base) */
+      --bg-surface: #FFFFFF;        /* Crisp Vellum */
+      --bg-subtle: #EFECE6;         /* Warm Paper Dim */
+      --bg-glass: rgba(247, 245, 240, 0.92);
+      
+      --ink-espresso: #1C1917;      /* Espresso Ink (30% Structure) */
+      --ink-umber: #6B655D;         /* Muted Umber */
+      --ink-timber: #3A2618;        /* Timber Wood */
+      
+      --brand-burgundy: #6A0715;    /* Oxford Burgundy (10% Action Pop) */
+      --brand-burgundy-hover: #4D050F;
+      --brand-burgundy-soft: rgba(106, 7, 21, 0.08);
+      
+      --accent-terracotta: #C2613C; /* Terracotta Wax */
+      --semantic-olive: #2D5A27;    /* Antique Olive */
+      --semantic-crimson: #BA1A1A;  /* Archival Crimson */
+      --border-rule: #E5E0D5;       /* Archival Rule */
+      
+      --shadow-sm: 0 4px 14px -2px rgba(28, 25, 23, 0.07);
+      --shadow-md: 0 18px 40px -8px rgba(28, 25, 23, 0.12);
+      --shadow-lg: 0 30px 64px -12px rgba(28, 25, 23, 0.22);
+    }
+
+    [data-theme="midnight"] {
+      --bg-canvas: #14110F;
+      --bg-surface: #1E1916;
+      --bg-subtle: #28221E;
+      --bg-glass: rgba(20, 17, 15, 0.92);
+      
+      --ink-espresso: #F7F5F0;
+      --ink-umber: #B5ADA2;
+      --ink-timber: #4A3221;
+      
+      --brand-burgundy: #9E192D;
+      --brand-burgundy-hover: #B82339;
+      --brand-burgundy-soft: rgba(158, 25, 45, 0.18);
+      
+      --accent-terracotta: #DF7650;
+      --semantic-olive: #569E4E;
+      --border-rule: #332B26;
+      
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --shadow-lg: 0 30px 64px rgba(0, 0, 0, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--ink-espresso);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+      width: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       DROPBOX-INSPIRED STICKY NAVIGATION & PILL BUTTONS
+       ========================================================================= */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-rule);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 82px;
+    }
+
+    .brand-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      height: 54px;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-logo-wrap:hover {
+      transform: translateY(-1px);
+    }
+
+    .brand-logo-svg {
+      height: 54px;
+      width: 150px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink-umber);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand-burgundy);
+      background: var(--brand-burgundy-soft);
+    }
+
+    /* Dropbox-style action button with sliding arrow */
+    .btn-dropbox {
+      background-color: var(--brand-burgundy);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-dropbox:hover {
+      background-color: var(--brand-burgundy-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-dropbox .arrow {
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-dropbox:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       1. HERO: 1-SCROLL 3D OPENING BOOK + DROPBOX MODULE DOCK
+       ========================================================================== */
+    .hero-section {
+      padding: 112px 0 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      perspective: 1800px;
+    }
+
+    .scroll-hint {
+      margin-bottom: 18px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--brand-burgundy);
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .scroll-hint:hover {
+      transform: translateY(-2px);
+    }
+
+    .book-stage {
+      width: 410px;
+      max-width: 90vw;
+      height: 510px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      margin: 0 auto 44px;
+    }
+
+    @media (min-width: 921px) {
+      .book-stage.is-open {
+        transform: translateX(175px);
+      }
+    }
+
+    /* Inside Right Page */
+    .book-inside-right {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-rule);
+      border-radius: 4px 18px 18px 4px;
+      box-shadow: var(--shadow-lg);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      z-index: 1;
+    }
+
+    .book-inside-right::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      right: -8px;
+      width: 8px;
+      background: repeating-linear-gradient(90deg, #F7F5F0, #F7F5F0 2px, #E5E0D5 2px, #E5E0D5 4px);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      background: var(--brand-burgundy-soft);
+      color: var(--brand-burgundy);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .book-inside-title {
+      font-size: clamp(1.45rem, 4vw, 1.95rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--ink-espresso);
+      margin: 10px 0;
+    }
+
+    .book-inside-text {
+      font-size: 0.94rem;
+      color: var(--ink-umber);
+      line-height: 1.55;
+    }
+
+    /* Front Hardcover */
+    .book-front-cover {
+      position: absolute;
+      inset: 0;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 5;
+    }
+
+    .book-stage.is-open .book-front-cover {
+      transform: rotateY(-172deg);
+    }
+
+    .cover-front-face {
+      position: absolute;
+      inset: 0;
+      background: #6A0715;
+      border-radius: 4px 18px 18px 4px;
+      border-left: 16px solid #4D050F;
+      box-shadow: var(--shadow-lg);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      color: #FFFFFF;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .cover-inner-frame {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      width: 100%;
+      height: 100%;
+      padding: 28px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cover-svg-badge {
+      width: 88px;
+      height: 88px;
+      background: #FFFFFF;
+      padding: 8px;
+      border-radius: 22px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .cover-back-face {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-subtle);
+      border: 2px solid var(--border-rule);
+      border-radius: 18px 4px 4px 18px;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 32px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .inside-toc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 14px;
+      padding: 24px 20px;
+      width: 100%;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+    }
+
+    /* Dropbox-Inspired Interactive Module Switcher Dock */
+    .module-dock-wrapper {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .module-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .module-tab-btn {
+      padding: 10px 18px;
+      border-radius: 9999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      color: var(--ink-umber);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .module-tab-btn:hover {
+      border-color: var(--brand-burgundy);
+      color: var(--ink-espresso);
+    }
+
+    .module-tab-btn.active {
+      background: var(--brand-burgundy);
+      color: #FFFFFF;
+      border-color: var(--brand-burgundy);
+    }
+
+    /* Picture-on-Picture Layered Stage */
+    .pop-stage {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-rule);
+      border-radius: 24px;
+      padding: 36px;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pop-main-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pop-floating-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--brand-burgundy);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      transform: translateY(8px);
+    }
+
+    .vitals-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .vital-mini-item {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .vital-mini-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--brand-burgundy);
+      line-height: 1.1;
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS
+       ========================================================================== */
+    section {
+      padding: 84px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3.8vw, 2.55rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--ink-espresso);
+      margin: 12px 0;
+    }
+
+    .section-subtitle {
+      font-size: 1.02rem;
+      color: var(--ink-umber);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       2. MODULE 2: ALL YOUR BOOKS CATALOG + LAYERED BOOK NOTE CARD
+       ========================================================================== */
+    .catalog-showcase {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .covers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .book-cover-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .book-cover-card:hover,
+    .book-cover-card.active {
+      transform: translateY(-6px);
+      border-color: var(--brand-burgundy);
+    }
+
+    .cover-art-box {
+      height: 150px;
+      border-radius: 8px;
+      padding: 14px;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      position: relative;
+      box-shadow: inset 3px 0 6px rgba(255,255,255,0.2);
+    }
+
+    .cover-status-badge {
+      align-self: flex-end;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 3px 8px;
+      border-radius: 99px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       3. MODULE 3: INTERACTIVE DIGITAL SHELF + SPINE COLOR & STAR RATING
+       ========================================================================== */
+    .shelf-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .shelf-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-rule);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 7px 14px;
+      border-radius: 9999px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      color: var(--ink-umber);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active {
+      background: var(--brand-burgundy);
+      color: #FFFFFF;
+      border-color: var(--brand-burgundy);
+    }
+
+    .shelf-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .clean-bookcase {
+      background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--border-rule) 100%);
+      border-radius: 16px;
+      padding: 30px 16px 0 16px;
+      border: 1px solid var(--border-rule);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 330px;
+      position: relative;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .bookcase-hint {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-umber);
+    }
+
+    .spines-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      min-height: 240px;
+      padding: 0 4px;
+      z-index: 2;
+      min-width: 320px;
+    }
+
+    .book-spine {
+      border-radius: 5px 5px 2px 2px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 4px;
+      color: #FFFFFF;
+      box-shadow: 
+        inset 2px 0 4px rgba(255, 255, 255, 0.25),
+        inset -2px 0 5px rgba(0, 0, 0, 0.35),
+        0 4px 10px rgba(28, 25, 23, 0.15);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      flex-shrink: 0;
+    }
+
+    .book-spine:hover {
+      transform: translateY(-10px);
+    }
+
+    .book-spine.selected {
+      transform: translateY(-14px);
+      box-shadow: 0 0 0 3px var(--ink-espresso), 0 12px 24px rgba(28, 25, 23, 0.25);
+      z-index: 10;
+    }
+
+    .book-spine.dimmed {
+      opacity: 0.25;
+      transform: scale(0.96);
+    }
+
+    .spine-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 150px;
+    }
+
+    .spine-stars {
+      font-size: 0.68rem;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .wood-ledge {
+      height: 20px;
+      margin: 0 -16px;
+      background: var(--ink-timber);
+      border-radius: 0 0 16px 16px;
+    }
+
+    .book-editor-panel {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(45, 90, 39, 0.14);
+      color: var(--semantic-olive);
+    }
+
+    .editor-control-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .control-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-umber);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--border-rule);
+      transition: transform 0.15s ease, color 0.15s ease;
+      line-height: 1;
+    }
+
+    .star-btn.filled {
+      color: var(--brand-burgundy);
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .swatch-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .swatch-btn.active {
+      border-color: var(--ink-espresso);
+      box-shadow: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--ink-espresso);
+    }
+
+    /* ==========================================================================
+       5. MODULE 5: AI LIBRARIAN & LIBRARY DEMO
+       ========================================================================== */
+    .librarian-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .librarian-topbar {
+      background: var(--bg-subtle);
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border-rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .inquiry-chips {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 22px 28px;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-rule);
+    }
+
+    .inquiry-chip-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .inquiry-chip-btn:hover,
+    .inquiry-chip-btn.active {
+      border-color: var(--brand-burgundy);
+      box-shadow: var(--shadow-sm);
+      background: var(--brand-burgundy-soft);
+    }
+
+    .inquiry-chip-btn strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--ink-espresso);
+      margin-bottom: 4px;
+    }
+
+    .inquiry-chip-btn span {
+      font-size: 0.76rem;
+      color: var(--ink-umber);
+      display: block;
+      line-height: 1.35;
+    }
+
+    .librarian-dialogue-box {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .user-query-bubble {
+      align-self: flex-end;
+      background: var(--brand-burgundy);
+      color: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 16px 16px 4px 16px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .ai-response-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .ai-avatar-svg {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    .ai-reply-bubble {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 4px 16px 16px 16px;
+      padding: 18px 20px;
+      font-size: 0.94rem;
+      color: var(--ink-espresso);
+      max-width: 780px;
+    }
+
+    /* ==========================================================================
+       6. MODULE 4: TREASURY & COLLECTION VALUE (CURRENCY SWITCHER)
+       ========================================================================== */
+    .budget-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .budget-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-rule);
+    }
+
+    .currency-pills {
+      display: flex;
+      gap: 4px;
+      background: var(--bg-canvas);
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-rule);
+    }
+
+    .currency-btn {
+      padding: 6px 12px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-umber);
+      cursor: pointer;
+    }
+
+    .currency-btn.active {
+      background: var(--brand-burgundy);
+      color: #FFFFFF;
+    }
+
+    .budget-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .budget-stat {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .budget-stat-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-umber);
+    }
+
+    .budget-stat-number {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--brand-burgundy);
+      margin: 4px 0 2px;
+      letter-spacing: -0.02em;
+    }
+
+    .budget-stat-note {
+      font-size: 0.78rem;
+      color: var(--ink-umber);
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-rule);
+    }
+
+    .format-box {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .bar-track {
+      height: 6px;
+      background: var(--border-rule);
+      border-radius: 9999px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--brand-burgundy);
+      border-radius: 9999px;
+    }
+
+    /* ==========================================================================
+       7. MODULE 6: PROFILE, BADGES & ATMOSPHERE THEME SWITCHER
+       ========================================================================== */
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    .badges-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .badge-pills-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .reader-badge-item {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-rule);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .theme-selector-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .theme-option-btn {
+      background: var(--bg-canvas);
+      border: 2px solid var(--border-rule);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--ink-espresso);
+      transition: border-color 0.2s ease;
+    }
+
+    .theme-option-btn.active {
+      border-color: var(--brand-burgundy);
+    }
+
+    /* ==========================================================================
+       HOW IT WORKS STEPS (DESKTOP HOVER + MOBILE SCROLL)
+       ========================================================================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rule);
+      border-radius: 18px;
+      padding: 30px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .step-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--brand-burgundy);
+      opacity: 0.3;
+      margin-bottom: 10px;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--ink-umber);
+      font-size: 0.92rem;
+    }
+
+    @media (hover: hover) {
+      .step-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--brand-burgundy);
+        box-shadow: 0 16px 32px rgba(106, 7, 21, 0.12), 0 0 0 2px var(--brand-burgundy);
+      }
+      .step-card:hover .step-num {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    @media (hover: none) {
+      .step-card.is-active {
+        transform: translateY(-8px);
+        border-color: var(--brand-burgundy);
+        box-shadow: 0 16px 32px rgba(106, 7, 21, 0.12), 0 0 0 2px var(--brand-burgundy);
+      }
+      .step-card.is-active .step-num {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    /* ==========================================================================
+       CLOSING BANNER & FOOTER
+       ========================================================================== */
+    .closing-box {
+      background: var(--brand-burgundy);
+      color: #FFFFFF;
+      border-radius: 24px;
+      padding: 56px 28px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .closing-box h2 {
+      font-size: clamp(1.75rem, 3.6vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .closing-box p {
+      font-size: 1.02rem;
+      opacity: 0.92;
+      max-width: 540px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-white {
+      background: #FFFFFF;
+      color: #6A0715;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-rule);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--ink-umber);
+      font-size: 0.88rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 920px) {
+      .pop-stage,
+      .catalog-showcase,
+      .shelf-layout,
+      .inquiry-chips,
+      .budget-grid,
+      .format-grid,
+      .settings-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .covers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand-logo-wrap {
+        height: 46px;
+      }
+      .brand-logo-svg {
+        height: 46px;
+        width: 128px;
+      }
+      .book-stage {
+        width: 100%;
+        max-width: 320px;
+        height: 440px;
+      }
+      .book-stage.is-open .book-front-cover {
+        transform: rotateY(-140deg);
+      }
+      .budget-grid,
+      .badge-pills-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTER INLINE SVG DEFINITIONS FOR REUSE ACROSS PAGE -->
+  <svg width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+    <defs>
+      <clipPath id="mybrarian-squircle">
+        <rect width="1000" height="1000" rx="225" ry="225" />
+      </clipPath>
+
+      <!-- Reusable Standalone Icon Symbol -->
+      <symbol id="mybrarian-icon" viewBox="0 0 1000 1000">
+        <g clip-path="url(#mybrarian-squircle)">
+          <rect width="1000" height="1000" fill="#6A0715" />
+          <g fill="#FFFFFF">
+            <path d="M0 0 C10.03 0.67 19.92 1.44 29.89 2.62 C32.06 2.88 34.24 3.12 36.42 3.36 C44.35 4.28 52.08 5.53 59.88 7.29 C62.59 7.91 65.3 8.46 68.04 8.96 C79.02 10.99 89.6 13.73 100.24 17.13 C103.25 18.08 106.27 19 109.29 19.92 C120.22 23.28 130.84 26.69 141.02 31.97 C143.31 33.16 145.63 34.31 147.94 35.46 C163.71 43.41 178.5 52.57 192 64 C192.98 64.79 193.95 65.59 194.96 66.41 C207.56 76.72 219.01 88.14 229 101 C229.85 102.05 230.71 103.11 231.57 104.16 C244.2 119.75 254.56 136.9 265 154 C268.88 149.4 272.08 144.4 275.38 139.38 C285.38 124.25 295.88 109.51 308 96 C308.54 95.4 309.07 94.8 309.62 94.19 C328.07 73.76 348.44 57.25 372 43 C372.88 42.45 373.76 41.9 374.66 41.34 C379.66 38.24 384.71 35.64 390.09 33.29 C393.23 31.9 396.33 30.42 399.44 28.94 C404.59 26.55 409.76 24.64 415.18 22.93 C417.81 22.06 420.32 21.07 422.88 20 C428.41 17.76 434.04 16.12 439.81 14.59 C441.34 14.18 442.87 13.75 444.39 13.32 C461.35 8.51 478.41 6.02 495.85 3.8 C501.35 3.1 506.83 2.29 512.31 1.42 C519.64 0.28 526.49 0 534 0 C534 141.57 534 283.14 534 429 C512 432 512 432 502.88 432.94 C493.11 433.99 483.58 435.89 474 438 C473.21 438.17 472.42 438.35 471.61 438.52 C464.39 440.13 457.19 441.74 450.21 444.23 C447.44 445.2 444.63 446.03 441.81 446.88 C431.26 450.12 421.1 453.79 411.13 458.55 C408.21 459.9 405.26 461.09 402.25 462.25 C384.46 469.59 367.52 481.52 352.32 493.22 C350.59 494.55 348.81 495.79 347 497 C346.68 499.78 346.56 502.34 346.57 505.12 C346.56 505.96 346.55 506.8 346.54 507.66 C346.51 510.45 346.5 513.23 346.49 516.01 C346.47 517.93 346.45 519.86 346.43 521.78 C346.39 526.86 346.36 531.93 346.33 537 C346.3 542.18 346.25 547.35 346.21 552.53 C346.12 562.68 346.06 572.84 346 583 C346.8 582.79 347.6 582.59 348.42 582.38 C349.48 582.11 350.54 581.84 351.64 581.56 C352.68 581.3 353.73 581.03 354.8 580.75 C359.81 579.57 364.85 578.85 369.94 578.12 C379.27 576.74 388.58 575.25 397.88 573.62 C412.69 571.04 427.52 568.57 442.36 566.1 C447.32 565.28 452.29 564.45 457.25 563.61 C468.73 561.68 480.2 559.77 491.71 558.1 C496.2 557.44 500.67 556.73 505.13 555.96 C506.19 555.78 507.25 555.6 508.34 555.42 C510.37 555.07 512.4 554.72 514.43 554.36 C519.28 553.52 524.05 552.88 528.96 552.54 C535.15 552.07 541.07 550.88 547.12 549.56 C554.41 548.04 561.59 546.67 569 546 C578.67 545.12 588.09 543.1 597.58 541.12 C608.06 538.95 608.06 538.95 613.17 538.98 C614.44 538.99 615.7 538.99 617 539 C617 537.57 617 537.57 617 536.11 C616.98 479.64 616.96 423.16 616.95 366.69 C616.95 359.91 616.95 353.14 616.95 346.37 C616.94 345.36 616.94 345.36 616.94 344.32 C616.94 322.46 616.93 300.59 616.92 278.72 C616.91 255.62 616.91 232.53 616.91 209.43 C616.9 195.58 616.9 181.74 616.89 167.89 C616.89 158.41 616.89 148.93 616.89 139.45 C616.89 133.97 616.89 128.49 616.88 123.02 C616.88 118.01 616.88 113 616.88 108 C616.88 106.18 616.88 104.36 616.88 102.54 C616.87 100.08 616.87 97.62 616.88 95.17 C616.87 94.45 616.87 93.72 616.87 92.98 C616.89 88.11 616.89 88.11 618 87 C620.24 86.59 622.49 86.25 624.75 85.94 C625.98 85.76 627.21 85.58 628.48 85.4 C632.26 84.98 635.99 84.96 639.78 84.97 C640.95 84.98 642.11 84.98 643.32 84.99 C644.2 84.99 645.09 85 646 85 C646.02 125.57 646.04 166.13 646.05 206.7 C646.05 211.58 646.05 216.46 646.05 221.35 C646.06 222.32 646.06 223.29 646.06 224.29 C646.06 237.77 646.07 251.24 646.07 264.72 C646.09 288.05 646.1 311.38 646.1 334.71 C646.1 335.63 646.1 336.54 646.1 337.49 C646.1 412 645.69 486.5 645 561 C643.55 561.32 642.11 561.65 640.66 561.97 C639.86 562.15 639.05 562.33 638.22 562.52 C635.92 563.02 633.63 563.42 631.31 563.74 C630.08 563.91 630.08 563.91 628.84 564.09 C627.98 564.21 627.12 564.32 626.23 564.45 C624.29 564.72 622.36 564.99 620.42 565.26 C619.41 565.4 618.39 565.54 617.35 565.69 C598.84 568.26 580.35 570.96 561.88 573.79 C559.6 574.14 557.31 574.48 555.03 574.83 C551.83 575.32 548.63 575.81 545.43 576.3 C544.49 576.44 543.55 576.59 542.58 576.73 C538.57 577.36 534.64 578.04 530.71 579.06 C527.51 579.87 524.48 580.42 521.21 580.78 C520.17 580.9 519.13 581.02 518.07 581.14 C516.99 581.26 515.92 581.38 514.81 581.5 C512.58 581.76 510.34 582.02 508.11 582.28 C507.05 582.4 505.99 582.52 504.9 582.65 C498.03 583.48 491.22 584.54 484.45 585.93 C479.29 586.97 474.12 587.82 468.92 588.62 C467.98 588.77 467.05 588.91 466.09 589.06 C464.11 589.37 462.14 589.67 460.17 589.98 C457.23 590.43 454.29 590.89 451.35 591.35 C441.88 592.82 432.41 594.24 422.91 595.57 C414.98 596.69 407.08 597.96 399.19 599.38 C389.03 601.15 378.87 602.87 368.69 604.48 C367.29 604.7 365.88 604.92 364.47 605.15 C362.5 605.46 360.53 605.77 358.57 606.08 C356.88 606.35 356.88 606.35 355.16 606.62 C352 607 352 607 346 607 C346 643.3 346 679.6 346 717 C328.67 699.67 311.33 682.33 294 665 C293.11 664.11 292.21 663.22 291.3 662.3 C289.56 660.56 287.86 658.81 286.2 656.98 C285.72 656.46 285.24 655.93 284.75 655.39 C284.25 654.85 283.76 654.31 283.25 653.75 C278.83 648.91 274.29 644.24 269.55 639.71 C268 638 268 638 268 636 C260.56 642.24 253.06 648.92 246.98 656.52 C244.82 659.22 242.46 661.57 240 664 C239.22 664.78 238.44 665.55 237.64 666.35 C236.83 667.16 236.02 667.97 235.18 668.8 C230.59 673.38 226 677.96 221.41 682.54 C218.65 685.3 215.88 688.06 213.11 690.82 C210.42 693.5 207.73 696.18 205.04 698.87 C204.02 699.89 203 700.9 201.97 701.92 C200.54 703.34 199.12 704.77 197.69 706.2 C196.88 707.01 196.07 707.81 195.23 708.65 C192.92 711 192.92 711 190.83 713.8 C190.23 714.53 189.62 715.25 189 716 C188.34 716 187.68 716 187 716 C186.67 680.03 186.34 644.06 186 607 C179.73 606.34 173.46 605.68 167 605 C162.98 604.4 159 603.77 155 603.06 C152.97 602.71 150.93 602.36 148.9 602.02 C147.42 601.76 147.42 601.76 145.91 601.5 C141.48 600.74 137.06 600.02 132.62 599.31 C131.85 599.19 131.07 599.06 130.26 598.94 C125.62 598.21 120.99 597.61 116.3 597.31 C114 597 114 597 110.35 596.06 C105.65 594.85 100.93 594.23 96.12 593.62 C87.46 592.49 78.82 591.26 70.19 589.94 C68.57 589.69 68.57 589.69 66.92 589.45 C65.37 589.21 65.37 589.21 63.79 588.96 C62.44 588.76 62.44 588.76 61.06 588.55 C58.58 588.1 56.16 587.59 53.7 587.02 C49.14 585.99 44.58 585.29 39.95 584.67 C38.22 584.43 36.48 584.19 34.75 583.94 C33.85 583.82 32.95 583.7 32.03 583.57 C17.23 581.53 2.5 579.31 -12.2 576.68 C-20.18 575.27 -28.15 574.15 -36.18 573.16 C-48.05 571.68 -59.82 569.58 -71.6 567.58 C-82.99 565.65 -94.35 563.84 -105.84 562.65 C-110.9 562.1 -110.9 562.1 -112 561 C-112.1 558.47 -112.13 555.97 -112.12 553.44 C-112.12 552.64 -112.13 551.83 -112.13 551 C-112.13 548.27 -112.12 545.54 -112.12 542.81 C-112.12 540.84 -112.12 538.88 -112.12 536.92 C-112.13 531.49 -112.12 526.07 -112.12 520.64 C-112.11 514.8 -112.11 508.96 -112.11 503.12 C-112.11 492.99 -112.11 482.87 -112.11 472.74 C-112.1 458.1 -112.09 443.46 -112.09 428.81 C-112.09 405.06 -112.08 381.31 -112.08 357.56 C-112.07 334.48 -112.06 311.39 -112.05 288.31 C-112.05 287.6 -112.05 286.89 -112.05 286.16 C-112.05 279.02 -112.05 271.88 -112.05 264.74 C-112.05 250.19 -112.05 235.65 -112.04 221.1 C-112.04 220.43 -112.04 219.76 -112.04 219.07 C-112.03 174.38 -112.02 129.69 -112 85 C-102.42 84.63 -93.69 85.86 -84 87 C-84 236.16 -84 385.32 -84 539 C-80.04 539.33 -76.08 539.66 -72 540 C-68.13 540.58 -64.29 541.2 -60.44 541.88 C-58.32 542.24 -56.2 542.6 -54.08 542.96 C-53.04 543.14 -52.01 543.32 -50.94 543.5 C-46.86 544.19 -42.78 544.81 -38.69 545.44 C-33.2 546.28 -27.73 547.22 -22.28 548.26 C-21.1 548.49 -19.91 548.71 -18.69 548.94 C-16.39 549.38 -14.08 549.83 -11.78 550.29 C-6.33 551.33 -1.03 552.13 4.51 552.46 C10.12 552.82 15.31 553.9 20.76 555.25 C26.1 556.49 31.51 557.19 36.94 557.94 C45.01 559.09 53.05 560.3 61.06 561.81 C72.08 563.88 83.13 565.72 94.19 567.56 C95.52 567.78 95.52 567.78 96.88 568.01 C105.42 569.44 113.98 570.85 122.54 572.18 C130.82 573.46 139.04 574.91 147.25 576.56 C155.3 578.15 163.3 579.6 171.46 580.54 C174.73 580.97 177.97 581.48 181.22 582.03 C182.84 582.3 182.84 582.3 184.5 582.58 C185.32 582.72 186.15 582.86 187 583 C187.29 572.01 187.48 561.03 187.54 550.03 C187.57 544.93 187.64 539.83 187.79 534.72 C189.78 511.87 189.78 511.87 182.17 491.55 C178.54 488.54 174.74 486.59 170.33 484.95 C166.45 483.37 163.14 480.96 159.69 478.62 C152.96 474.44 146.04 470.64 139 467 C139 466.34 139 465.68 139 465 C138.17 464.91 137.35 464.81 136.5 464.72 C132.33 463.86 128.89 462.3 125.06 460.5 C104.38 451.02 104.38 451.02 82.62 444.6 C79.79 443.95 77.12 443.06 74.38 442.12 C64.55 439.02 54.32 437.45 44.2 435.62 C40.12 434.83 36.06 433.9 32 433 C21.44 431.68 10.88 430.36 0 429 C0 287.43 0 145.86 0 0 Z " transform="translate(234,170)"/>
+            <path d="M0 0 C10.69 0 21.35 1.07 32 2 C32 136.97 32 271.94 32 411 C39.59 411.33 47.18 411.66 55 412 C61.15 412.85 67.22 413.76 73.31 414.88 C74.79 415.14 76.27 415.39 77.74 415.65 C80.67 416.17 83.6 416.68 86.53 417.21 C91.26 418.05 96 418.85 100.74 419.64 C101.85 419.83 101.85 419.83 102.98 420.02 C106.94 420.68 110.9 421.28 114.88 421.81 C122.86 423.15 130.53 425.71 138.24 428.13 C141.09 429.03 143.94 429.9 146.79 430.77 C163.83 436.03 163.83 436.03 171.73 439.91 C173.96 440.98 176.18 441.84 178.5 442.69 C197.21 450.08 218.63 461.63 233 476 C233.07 477.52 233.08 479.04 233.06 480.56 C233.05 481.39 233.04 482.22 233.04 483.07 C233.02 484.02 233.02 484.02 233 485 C229.05 483.73 225.24 482.3 221.43 480.64 C187.66 466.05 153.36 455.82 117 450 C110.79 448.99 104.59 447.93 98.4 446.78 C85.82 444.47 73.39 442.56 60.62 441.74 C50.05 441.06 39.53 440.01 29 438.94 C28.13 438.85 27.26 438.76 26.36 438.67 C22.37 438.27 18.38 437.86 14.39 437.45 C9.6 436.96 4.8 436.48 0 436 C0 292.12 0 148.24 0 0 Z " transform="translate(172,210)"/>
+            <path d="M0 0 C0 143.88 0 287.76 0 436 C-43 440 -43 440 -56.06 440.88 C-67.85 441.73 -79.5 443.34 -91.19 445 C-92.12 445.13 -93.05 445.26 -94.01 445.4 C-96.69 445.78 -99.37 446.17 -102.04 446.56 C-102.84 446.68 -103.64 446.79 -104.47 446.91 C-109.11 447.61 -113.48 448.67 -118 450 C-119.51 450.26 -121.02 450.48 -122.54 450.64 C-123.36 450.74 -124.17 450.84 -125.02 450.94 C-125.88 451.04 -126.74 451.14 -127.62 451.25 C-137.12 452.48 -146.03 454.78 -155.17 457.6 C-158.33 458.56 -161.43 459.3 -164.68 459.88 C-170.95 461.07 -176.94 463.11 -182.97 465.15 C-184.93 465.81 -186.89 466.46 -188.86 467.1 C-195.66 469.37 -202.24 471.88 -208.72 474.94 C-211.33 476.15 -213.97 477.14 -216.69 478.06 C-220.11 479.26 -223.33 480.59 -226.56 482.25 C-230 484 -230 484 -232 484 C-232.66 480.82 -232.77 478.18 -232 475 C-229.18 471.63 -225.64 469.41 -222 467 C-220.85 466.2 -219.7 465.4 -218.56 464.59 C-189.06 444.16 -156.3 431.62 -121.5 423.44 C-120.86 423.29 -120.22 423.13 -119.55 422.98 C-108.56 420.4 -97.58 418.54 -86.34 417.39 C-83.81 417.02 -83.81 417.02 -80.7 416.03 C-76.91 414.98 -73.2 414.38 -69.3 413.93 C-68.58 413.84 -67.87 413.76 -67.13 413.67 C-65.62 413.49 -64.11 413.31 -62.6 413.14 C-60.33 412.88 -58.07 412.6 -55.8 412.32 C-54.32 412.15 -52.84 411.98 -51.36 411.8 C-50.7 411.72 -50.04 411.64 -49.36 411.56 C-43.14 410.86 -37.39 411 -31 411 C-31 276.03 -31 141.06 -31 2 C-22.59 1.5 -22.59 1.5 -14 1 C-11 0 -11 0 0 0 Z " transform="translate(829,210)"/>
+            <path d="M0 0 C1.44 -0.03 2.87 -0.05 4.31 -0.06 C5.51 -0.08 5.51 -0.08 6.74 -0.1 C9 0 9 0 12 1 C13.8 1.24 15.6 1.44 17.41 1.61 C19.09 1.78 19.09 1.78 20.8 1.95 C22.63 2.13 22.63 2.13 24.5 2.31 C27.13 2.58 29.76 2.84 32.39 3.11 C33.08 3.18 33.77 3.25 34.48 3.32 C42.76 4.17 51.04 5.11 59.31 6.06 C60.03 6.14 60.75 6.23 61.49 6.31 C66.33 6.86 71.16 7.43 76 8 C76.69 8.08 77.38 8.16 78.09 8.25 C86.67 9.26 95.19 10.45 103.69 12 C109.72 13.08 115.74 14.14 121.81 15 C127.77 15.88 133.61 17.2 139.47 18.59 C143.12 19.44 146.63 20.09 150.36 20.41 C155.81 20.95 160.78 22.68 165.94 24.44 C172.19 26.55 178.28 28.4 184.79 29.51 C187.88 30.2 190.53 31.5 193.37 32.86 C197.96 34.85 202.77 36.26 207.55 37.75 C210.69 38.89 213.2 40.21 216 42 C221.59 44.52 227.3 46.74 233 49 C233 52.63 233 56.26 233 60 C221.53 58.87 210.3 57.27 199 55 C187.66 52.74 176.35 50.7 164.89 49.15 C157.7 48.15 150.61 46.83 143.5 45.42 C136.9 44.13 130.32 43.17 123.64 42.39 C121 42 121 42 120 41 C116.91 40.53 113.83 40.11 110.73 39.73 C108.77 39.48 106.8 39.23 104.84 38.97 C101.76 38.58 98.68 38.19 95.6 37.81 C84.42 36.41 73.4 34.81 62.4 32.37 C56.36 31.04 50.34 30.14 44.19 29.5 C35.18 28.47 26.3 27.08 17.39 25.36 C13.24 24.56 9.14 23.87 4.93 23.45 C1 23 1 23 0 22 C-0.09 20.37 -0.11 18.73 -0.1 17.09 C-0.09 16.1 -0.09 15.11 -0.09 14.09 C-0.08 13.05 -0.07 12.01 -0.06 10.94 C-0.06 9.89 -0.05 8.85 -0.05 7.77 C-0.04 5.18 -0.02 2.59 0 0 Z " transform="translate(172,668)"/>
+            <path d="M0 0 C0 6.93 0 13.86 0 21 C-33.02 27.48 -33.02 27.48 -45.16 28.42 C-49.18 28.74 -52.9 29.43 -56.8 30.47 C-61.29 31.55 -65.87 32.14 -70.44 32.81 C-71.56 32.98 -72.67 33.15 -73.83 33.32 C-77.55 33.89 -81.28 34.44 -85 35 C-90.52 35.83 -96.04 36.66 -101.56 37.5 C-102.61 37.66 -102.61 37.66 -103.68 37.82 C-121.72 40.55 -139.73 43.4 -157.69 46.57 C-163.76 47.63 -169.84 48.61 -175.94 49.5 C-191.31 51.76 -206.67 54.18 -221.88 57.39 C-225.24 58.05 -228.61 58.54 -232 59 C-232 55.7 -232 52.4 -232 49 C-223.18 44.14 -214.41 39.64 -205 36 C-203.29 35.31 -203.29 35.31 -201.54 34.61 C-179.73 25.98 -156.13 19.19 -132.8 16.56 C-129.09 16.01 -125.65 15.16 -122.04 14.16 C-111.23 11.33 -100.19 9.95 -89.12 8.44 C-86.92 8.13 -84.72 7.82 -82.52 7.51 C-63.09 4.82 -43.68 2.38 -24.12 0.81 C-22.56 0.69 -22.56 0.69 -20.97 0.56 C-13.96 0.04 -7.03 -0.07 0 0 Z " transform="translate(828,669)"/>
+          </g>
+        </g>
+      </symbol>
+
+      <!-- Tightly Cropped, High-Impact Horizontal Lockup Symbol -->
+      <symbol id="mybrarian-horizontal" viewBox="0 0 2340 840">
+        <g transform="translate(0, 20) scale(0.8)">
+          <use href="#mybrarian-icon" width="1000" height="1000" />
+        </g>
+        <text x="900" y="425" style="font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 800; font-size: 295px; fill: currentColor; letter-spacing: -0.03em; dominant-baseline: central;">Mybrarian</text>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- STICKY NAVIGATION WITH CRISP INLINE HORIZONTAL SVG -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo-wrap" aria-label="Mybrarian Home">
+        <svg class="brand-logo-svg" viewBox="0 0 2340 840" role="img" aria-label="Mybrarian">
+          <use href="#mybrarian-horizontal" />
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="#workspace">Home</a>
+        <a href="#books-catalog">Books</a>
+        <a href="#digital-shelves">Shelves</a>
+        <a href="#treasury">Collection & Budget</a>
+        <a href="#ai-librarian">AI Librarian</a>
+        <a href="#settings">Settings</a>
+      </nav>
+      <div>
+        <a href="#digital-shelves" class="btn-dropbox">
+          <span>Explore Shelves</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO: 1-SCROLL 3D BOOK + DROPBOX MODULE SWITCHER -->
+    <section class="hero-section" id="workspace">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+        <button class="scroll-hint" id="scrollHint" onclick="toggleHeroBook()">
+          Tap or scroll once to open your book
+        </button>
+
+        <div class="book-stage" id="heroBookStage" onclick="toggleHeroBook()">
+          <!-- Inside Right Page -->
+          <div class="book-inside-right">
+            <span class="pill-tag">Personal Library Workspace</span>
+            <div>
+              <h1 class="book-inside-title">Organize your personal library in one place.</h1>
+              <p class="book-inside-text">
+                Mybrarian connects your physical bookcases, personal reading notes, collection budget, and private AI Librarian in one calm home.
+              </p>
+            </div>
+            <div>
+              <a href="#digital-shelves" class="btn-dropbox" style="width: 100%;" onclick="event.stopPropagation()">
+                <span>Open Your Study</span>
+                <span class="arrow">↓</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Front Hardcover with Inline Icon SVG -->
+          <div class="book-front-cover">
+            <div class="cover-front-face">
+              <div class="cover-inner-frame">
+                <span style="font-size: 0.78rem; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; text-transform: uppercase;">Reading Study</span>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <div class="cover-svg-badge">
+                    <svg viewBox="0 0 1000 1000" width="100%" height="100%">
+                      <use href="#mybrarian-icon" />
+                    </svg>
+                  </div>
+                  <h2 style="font-size: 2.05rem; font-weight: 800; letter-spacing: -0.03em; margin-top: 14px;">Mybrarian</h2>
+                  <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">Your Real Bookshelves, Online</p>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; background: rgba(255,255,255,0.18); padding: 6px 16px; border-radius: 99px;">Tap or Scroll to Open</span>
+              </div>
+            </div>
+
+            <!-- Inside Left Cover: The 6 Built App Modules -->
+            <div class="cover-back-face">
+              <div class="inside-toc-card">
+                <span class="pill-tag" style="margin-bottom: 10px;">6 Core Rooms</span>
+                <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 10px;">Inside the Application</h3>
+                <div style="font-size: 0.86rem; color: var(--ink-umber); display: flex; flex-direction: column; gap: 6px; font-weight: 600;">
+                  <div>1. Home: Reading Study Summary</div>
+                  <div>2. Books: All Your Books & Notes</div>
+                  <div>3. Shelves: Drag & Drop Digital Twin</div>
+                  <div>4. Collection & Budget</div>
+                  <div>5. AI Librarian: Grounded Assistant</div>
+                  <div>6. Settings: Badges & Themes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DROPBOX-INSPIRED INTERACTIVE MODULE TOUR -->
+        <div class="module-dock-wrapper">
+          <div class="module-tabs">
+            <button class="module-tab-btn active" onclick="switchModuleTab(0, this)">1. Home Study</button>
+            <button class="module-tab-btn" onclick="switchModuleTab(1, this)">2. All Books</button>
+            <button class="module-tab-btn" onclick="switchModuleTab(2, this)">3. Digital Shelves</button>
+            <button class="module-tab-btn" onclick="switchModuleTab(3, this)">4. Collection & Budget</button>
+            <button class="module-tab-btn" onclick="switchModuleTab(4, this)">5. AI Librarian</button>
+            <button class="module-tab-btn" onclick="switchModuleTab(5, this)">6. Profile & Settings</button>
+          </div>
+
+          <!-- Picture-on-Picture Layered Container -->
+          <div class="pop-stage">
+            <div class="pop-main-card">
+              <span class="pill-tag" id="modTag">Module 01 • Home Study</span>
+              <h3 style="font-size: 1.65rem; font-weight: 800; letter-spacing: -0.02em; margin: 10px 0;" id="modTitle">Your personal reading study at a glance.</h3>
+              <p style="color: var(--ink-umber); font-size: 0.96rem; margin-bottom: 20px;" id="modDesc">
+                See how many books are indexed across your bookcases, track your active reading pass, and follow your annual reading goal at your own pace.
+              </p>
+              <a href="#digital-shelves" class="btn-dropbox" id="modCta">
+                <span>Try Interactive Demo</span>
+                <span class="arrow">→</span>
+              </a>
+            </div>
+
+            <!-- Overlapping Picture-on-Picture Card -->
+            <div class="pop-floating-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <strong style="font-size: 0.92rem;" id="modCardTitle">Reading Study Overview</strong>
+                <span class="status-pill" id="modCardBadge">2026 Goal: 8%</span>
+              </div>
+              <p style="font-size: 0.84rem; color: var(--ink-umber);" id="modCardSub">Annual Target: 2 of 25 Books Completed</p>
+
+              <div class="vitals-mini-grid">
+                <div class="vital-mini-item">
+                  <div class="vital-mini-num" id="modStat1Num">14</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat1Label">Books Listed</div>
+                </div>
+                <div class="vital-mini-item">
+                  <div class="vital-mini-num" id="modStat2Num">12 / 14</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat2Label">Shelved (2 Staging)</div>
+                </div>
+                <div class="vital-mini-item">
+                  <div class="vital-mini-num" id="modStat3Num">2</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat3Label">Currently Reading</div>
+                </div>
+                <div class="vital-mini-item">
+                  <div class="vital-mini-num" id="modStat4Num">€596.30</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat4Label">Collection Value</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. MODULE 2: ALL YOUR BOOKS & PERSONAL NOTES -->
+    <section id="books-catalog" style="background: var(--bg-subtle); border-top: 1px solid var(--border-rule); border-bottom: 1px solid var(--border-rule);">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 02 • Books & Notes</span>
+          <h2 class="section-title">Every book you own, with your private notes.</h2>
+          <p class="section-subtitle">
+            Browse your collection by format or status. Click any cover below to view the personal reading note and edition details stored inside your catalog.
+          </p>
+        </div>
+
+        <div class="catalog-showcase">
+          <div class="covers-grid" id="catalogGrid">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Picture-on-Picture Book Note Card -->
+          <div class="pop-floating-card" style="transform: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span class="pill-tag" id="noteFormatTag">First Edition Hardcover</span>
+              <span class="status-pill" id="noteRatingBadge">★ 5.0 / 5.0</span>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;" id="noteBookTitle">The Secret History</h3>
+            <p style="font-size: 0.92rem; color: var(--ink-umber); margin-bottom: 16px;" id="noteBookAuthor">Donna Tartt • Classic Literature</p>
+
+            <div style="background: var(--bg-canvas); padding: 16px; border-radius: 12px; border-left: 4px solid var(--brand-burgundy); font-style: italic; font-size: 0.92rem; color: var(--ink-espresso); margin-bottom: 16px;" id="noteQuoteText">
+              "A tragic, spellbinding story of aesthetic obsession and collegiate seclusion."
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.84rem; color: var(--ink-umber); font-weight: 600;">
+              <span id="noteLocation">Study Bookshelf • Row 2</span>
+              <strong style="color: var(--ink-espresso);" id="notePrice">Paid: €65.00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MODULE 3: INTERACTIVE DIGITAL SHELF -->
+    <section id="digital-shelves">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 03 • Digital Shelves</span>
+          <h2 class="section-title">Arrange your shelves by hand.</h2>
+          <p class="section-subtitle">
+            Click any book on the shelf to rate it, change its spine color, or drag books left and right to match how they sit in your room.
+          </p>
+        </div>
+
+        <div class="shelf-card">
+          <div class="shelf-topbar">
+            <div>
+              <strong style="font-size: 1.05rem;">Main Study • Bookcase 1 (Row 2)</strong>
+              <p style="font-size: 0.85rem; color: var(--ink-umber);">Click a book to edit, or drag spines to reorder</p>
+            </div>
+
+            <div class="filter-group">
+              <button class="filter-btn active" onclick="filterShelf('all', this)">All Books (6)</button>
+              <button class="filter-btn" onclick="filterShelf('five-star', this)">★ 5-Star Favorites</button>
+              <button class="filter-btn" onclick="filterShelf('unread', this)">Unread</button>
+              <button class="filter-btn" onclick="filterShelf('reading', this)">Currently Reading</button>
+            </div>
+          </div>
+
+          <div class="shelf-layout">
+            <div class="clean-bookcase">
+              <div class="bookcase-hint">
+                <span>12 Shelved • 2 Staging</span>
+                <span>Drag or tap spines</span>
+              </div>
+
+              <div class="spines-row" id="spinesStage">
+                <!-- Rendered by JS -->
+              </div>
+
+              <div class="wood-ledge"></div>
+            </div>
+
+            <div class="book-editor-panel">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: var(--ink-umber);" id="inspLocation">Study • Row 2</span>
+                  <span class="status-pill" id="inspStatus">Read</span>
+                </div>
+                <h3 style="font-size: 1.45rem; font-weight: 800; letter-spacing: -0.025em;" id="inspTitle">Dune</h3>
+                <p style="font-size: 0.94rem; color: var(--ink-umber);" id="inspAuthor">Frank Herbert</p>
+              </div>
+
+              <div class="editor-control-box">
+                <div class="control-label">
+                  <span>Your Rating</span>
+                  <strong style="color: var(--brand-burgundy);" id="inspStarLabel">5 / 5 Stars</strong>
+                </div>
+                <div class="star-row" id="starRow">
+                  <button class="star-btn" onclick="setRating(1)">★</button>
+                  <button class="star-btn" onclick="setRating(2)">★</button>
+                  <button class="star-btn" onclick="setRating(3)">★</button>
+                  <button class="star-btn" onclick="setRating(4)">★</button>
+                  <button class="star-btn" onclick="setRating(5)">★</button>
+                </div>
+              </div>
+
+              <div class="editor-control-box">
+                <div class="control-label">
+                  <span>Spine Color (Click to Change)</span>
+                </div>
+                <div class="color-swatches" id="colorSwatches"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MODULE 5: AI LIBRARIAN -->
+    <section id="ai-librarian">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 05 • Private AI Librarian</span>
+          <h2 class="section-title">Grounded strictly in the books you own.</h2>
+          <p class="section-subtitle">
+            Your AI Librarian indexes your 14 volumes, 2 bookcases, and personal reading notes. Click any inquiry chip below to ask a question.
+          </p>
+        </div>
+
+        <div class="librarian-card">
+          <div class="librarian-topbar">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
+                <use href="#mybrarian-icon" />
+              </svg>
+              <div>
+                <strong style="font-size: 0.96rem; display: block;">AI Librarian</strong>
+                <span style="font-size: 0.8rem; color: var(--ink-umber);">14 Books Listed • 2 Bookcases • Grounded Local Index</span>
+              </div>
+            </div>
+            <span class="status-pill">Active Orientation</span>
+          </div>
+
+          <div class="inquiry-chips">
+            <button class="inquiry-chip-btn active" onclick="askLibrarian(0, this)">
+              <strong>Dark Gothic Fiction</strong>
+              <span>Locate moody, atmospheric novels resting on your shelves</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(1, this)">
+              <strong>Thematic Recommendation</strong>
+              <span>Draw suggestions matched to your recent reading notes</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(2, this)">
+              <strong>Find a Book</strong>
+              <span>Find which bookshelf and row your book is on</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(3, this)">
+              <strong>Unread Books</strong>
+              <span>Discover books in your collection waiting to be read</span>
+            </button>
+          </div>
+
+          <div class="librarian-dialogue-box">
+            <div class="user-query-bubble" id="aiUserPrompt">
+              Locate moody, atmospheric novels resting on my shelves.
+            </div>
+
+            <div class="ai-response-row">
+              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
+                <use href="#mybrarian-icon" />
+              </svg>
+              <div class="ai-reply-bubble" id="aiLibrarianReply">
+                Hello, reader. Looking across your 14 listed books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MODULE 4: TREASURY & COLLECTION VALUE -->
+    <section id="treasury" style="background: var(--bg-subtle); border-top: 1px solid var(--border-rule); border-bottom: 1px solid var(--border-rule);">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 04 • Collection & Budget</span>
+          <h2 class="section-title">Track your book budget and collection value.</h2>
+          <p class="section-subtitle">
+            Monitor your book purchases, format breakdown, reading subscriptions, and wishlist targets. Click any currency below to convert live.
+          </p>
+        </div>
+
+        <div class="budget-card">
+          <div class="budget-topbar">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 800;">Collection & Book Purchases</h3>
+              <p style="font-size: 0.88rem; color: var(--ink-umber);">Across 14 listed physical books (12 placed, 2 waiting to be shelved)</p>
+            </div>
+
+            <div class="currency-pills">
+              <button class="currency-btn active" onclick="switchCurrency('EUR', '€', 1, this)">EUR (€)</button>
+              <button class="currency-btn" onclick="switchCurrency('USD', '$', 1.09, this)">USD ($)</button>
+              <button class="currency-btn" onclick="switchCurrency('GBP', '£', 0.85, this)">GBP (£)</button>
+              <button class="currency-btn" onclick="switchCurrency('CHF', 'CHF ', 0.94, this)">CHF</button>
+              <button class="currency-btn" onclick="switchCurrency('JPY', '¥', 163, this)">JPY (¥)</button>
+            </div>
+          </div>
+
+          <div class="budget-grid">
+            <div class="budget-stat">
+              <div class="budget-stat-label">Total Capital Invested</div>
+              <div class="budget-stat-number" id="valTotal">€596.30</div>
+              <div class="budget-stat-note">Across 14 books</div>
+            </div>
+            <div class="budget-stat">
+              <div class="budget-stat-label">Average / Volume</div>
+              <div class="budget-stat-number" id="valAvg">€42.59</div>
+              <div class="budget-stat-note">Weighted edition cost</div>
+            </div>
+            <div class="budget-stat">
+              <div class="budget-stat-label">Wishlist Target</div>
+              <div class="budget-stat-number" id="valWishlist">€85.00</div>
+              <div class="budget-stat-note">Meditations (Folio Society)</div>
+            </div>
+            <div class="budget-stat">
+              <div class="budget-stat-label">Prized Acquisition</div>
+              <div class="budget-stat-number" id="valPrized">€140.00</div>
+              <div class="budget-stat-note">Heretics of Dune (Fine Press)</div>
+            </div>
+          </div>
+
+          <div class="format-grid">
+            <div class="format-box">
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700;">
+                <span>Leatherbound / Fine Press (3)</span>
+                <span id="valFormat1">€298.76</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div>
+              <span style="font-size: 0.78rem; color: var(--ink-umber);">50% of collection value</span>
+            </div>
+
+            <div class="format-box">
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700;">
+                <span>Hardcover (7)</span>
+                <span id="valFormat2">€198.22</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width: 33%;"></div></div>
+              <span style="font-size: 0.78rem; color: var(--ink-umber);">33% of collection value</span>
+            </div>
+
+            <div class="format-box">
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700;">
+                <span>Trade Paperback (4)</span>
+                <span id="valFormat3">€99.32</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width: 17%;"></div></div>
+              <span style="font-size: 0.78rem; color: var(--ink-umber);">17% of collection value</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. MODULE 6: PROFILE BADGES & ATMOSPHERE THEME SWITCHER -->
+    <section id="settings">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 06 • Profile & Atmosphere</span>
+          <h2 class="section-title">Earn reader badges and choose your lighting.</h2>
+          <p class="section-subtitle">
+            Celebrate reading milestones with automatic profile badges, and switch the entire page between Light and Dark themes right now.
+          </p>
+        </div>
+
+        <div class="settings-grid">
+          <div class="badges-card">
+            <span class="pill-tag">Reader Profile</span>
+            <h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 8px;">Owner & Milestone Badges</h3>
+            <p style="font-size: 0.9rem; color: var(--ink-umber);">Unlocked automatically as you catalog books and record notes.</p>
+
+            <div class="badge-pills-wrap">
+              <div class="reader-badge-item">
+                <span>👑 Library Owner</span>
+                <span class="status-pill">Active</span>
+              </div>
+              <div class="reader-badge-item">
+                <span>🏛️ Founding Member</span>
+                <span class="status-pill">Active</span>
+              </div>
+              <div class="reader-badge-item">
+                <span>🌱 First Book</span>
+                <span class="status-pill">Unlocked</span>
+              </div>
+              <div class="reader-badge-item">
+                <span>📚 Bookworm</span>
+                <span class="status-pill">Unlocked</span>
+              </div>
+              <div class="reader-badge-item">
+                <span>🔥 Page Turner</span>
+                <span class="status-pill">Unlocked</span>
+              </div>
+              <div class="reader-badge-item">
+                <span>✍️ Quote Keeper</span>
+                <span class="status-pill">Unlocked</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="badges-card">
+            <span class="pill-tag">Reading Atmosphere</span>
+            <h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 8px;">Test Live Theme Switcher</h3>
+            <p style="font-size: 0.9rem; color: var(--ink-umber);">Click below to preview Light Theme (Light) or Dark Theme (Dark).</p>
+
+            <div class="theme-selector-group">
+              <button class="theme-option-btn active" id="btnThemeLight" onclick="setPageTheme('parchment')">
+                <div>
+                  <strong style="display: block; font-size: 0.95rem;">Light Theme (Light Mode)</strong>
+                  <span style="font-size: 0.82rem; color: var(--ink-umber);">Sunlit warm vellum and espresso ink</span>
+                </div>
+                <span class="status-pill">Default</span>
+              </button>
+
+              <button class="theme-option-btn" id="btnThemeDark" onclick="setPageTheme('midnight')">
+                <div>
+                  <strong style="display: block; font-size: 0.95rem;">Dark Theme (Dark Mode)</strong>
+                  <span style="font-size: 0.82rem; color: var(--ink-umber);">Obsidian study and warm candlelight</span>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-burgundy);">Preview</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS (3 STEPS WITH DESKTOP HOVER & MOBILE SCROLL) -->
+    <section style="background: var(--bg-subtle); border-top: 1px solid var(--border-rule); border-bottom: 1px solid var(--border-rule);">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Simple Workflow</span>
+          <h2 class="section-title">Ready in three simple steps.</h2>
+          <p class="section-subtitle">
+            Adding your books and setting up your shelves is quick and calm. Hover over any step on desktop or scroll on mobile to see it light up.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Catalog Your Books</h3>
+            <p>Add your editions, record purchase prices, and write private book notes and favorite quotes in one clean catalog.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Build Your Shelves</h3>
+            <p>Move books from staging onto virtual bookcases that match your home, customize spine colors, and rate each book.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Ask Your AI Librarian</h3>
+            <p>Locate any book across your shelves, explore thematic recommendations from books you own, and track your collection value.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING BANNER -->
+    <section style="padding-top: 20px;">
+      <div class="container">
+        <div class="closing-box">
+          <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9;">Your Reading Space</span>
+          <h2 style="margin-top: 6px;">Every book on your shelf has a story.</h2>
+          <p>
+            Give your personal book collection a calm, organized home online, with local data backups and zero reading pressure.
+          </p>
+          <a href="#workspace" class="btn-white">
+            <span>Back to Top</span>
+            <span>↑</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER WITH INLINE ICON SVG -->
+  <footer>
+    <div class="container">
+      <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 12px;">
+        <svg viewBox="0 0 1000 1000" style="width: 30px; height: 30px;">
+          <use href="#mybrarian-icon" />
+        </svg>
+        <strong style="color: var(--ink-espresso); font-size: 1.08rem;">Mybrarian</strong>
+      </div>
+      <p>© 2026 Mybrarian. Organize your personal library in one place.</p>
+      <p style="margin-top: 10px;">
+        <a href="https://www.linkedin.com/company/mybrarian"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Mybrarian on LinkedIn">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE SCRIPTS -->
+  <script>
+    // 1. HERO 3D BOOK OPEN/CLOSE
+    const heroBookStage = document.getElementById('heroBookStage');
+    const scrollHint = document.getElementById('scrollHint');
+
+    function toggleHeroBook() {
+      heroBookStage.classList.toggle('is-open');
+      scrollHint.textContent = heroBookStage.classList.contains('is-open')
+        ? 'Tap again to close book'
+        : 'Tap or scroll once to open your book';
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 25) {
+        heroBookStage.classList.add('is-open');
+        scrollHint.style.opacity = '0.35';
+      } else {
+        heroBookStage.classList.remove('is-open');
+        scrollHint.style.opacity = '1';
+      }
+    }, { passive: true });
+
+    // 2. DROPBOX-STYLE MODULE SWITCHER TABS
+    const appModules = [
+      {
+        tag: "Module 01 • Home Study",
+        title: "Your personal reading study at a glance.",
+        desc: "See how many books are indexed across your bookcases, track your active reading pass, and follow your annual reading goal at your own pace.",
+        cardTitle: "Reading Study Overview",
+        badge: "2026 Goal: 8%",
+        sub: "Annual Target: 2 of 25 Books Completed",
+        s1Num: "14", s1Lab: "Books Listed",
+        s2Num: "12 / 14", s2Lab: "Shelved (2 Staging)",
+        s3Num: "2", s3Lab: "Currently Reading",
+        s4Num: "€596.30", s4Lab: "Collection Value",
+        link: "#workspace"
+      },
+      {
+        tag: "Module 02 • All Your Books",
+        title: "Every edition listed with private notes.",
+        desc: "Browse your complete library by genre, format, or reading status. Store personal reflections and memorable quotes inside each book record.",
+        cardTitle: "Catalog Summary",
+        badge: "5 Genres",
+        sub: "Classic Literature, Sci-Fi, History, Science, Art",
+        s1Num: "8", s1Lab: "5-Star Masterpieces",
+        s2Num: "4", s2Lab: "4-Star Distinguished",
+        s3Num: "2", s3Lab: "Awaiting Rating",
+        s4Num: "14", s4Lab: "Total Bound Copies",
+        link: "#books-catalog"
+      },
+      {
+        tag: "Module 03 • Digital Shelves",
+        title: "A drag-and-drop twin of your real bookcases.",
+        desc: "Place books onto virtual shelves that match your furniture. Reorder spines by hand, customize spine colors, and filter shelves instantly.",
+        cardTitle: "Bookcase Occupancy",
+        badge: "2 Bookcases",
+        sub: "Main Study & Living Room Shelves",
+        s1Num: "12", s1Lab: "Placed on Shelves",
+        s2Num: "2", s2Lab: "In Staging Dock",
+        s3Num: "6", s3Lab: "Spine Cloth Colors",
+        s4Num: "100%", s4Lab: "Custom Order",
+        link: "#digital-shelves"
+      },
+      {
+        tag: "Module 04 • Collection & Budget",
+        title: "Understand the true value of your library.",
+        desc: "Track your book spending, average cost per edition, format investments across Fine Press and Hardcovers, and your acquisition wishlist.",
+        cardTitle: "Collection Overview",
+        badge: "Multi-Currency",
+        sub: "Supports EUR, USD, GBP, CHF, JPY, CAD, AUD",
+        s1Num: "€596.30", s1Lab: "Total Invested",
+        s2Num: "€42.59", s2Lab: "Average / Volume",
+        s3Num: "€140.00", s3Lab: "Top Fine Press Book",
+        s4Num: "€85.00", s4Lab: "Wishlist Target",
+        link: "#treasury"
+      },
+      {
+        tag: "Module 05 • AI Librarian",
+        title: "Private intelligence grounded in your books.",
+        desc: "Ask natural questions to locate any book on your shelves, find dark gothic novels you own, or get recommendations matched to your notes.",
+        cardTitle: "Library Overview",
+        badge: "Zero Hallucinations",
+        sub: "Strictly grounded in your 14 listed books",
+        s1Num: "14", s1Lab: "Books Listed",
+        s2Num: "2", s2Lab: "Bookcases Mapped",
+        s3Num: "1", s3Lab: "Unread Waiting",
+        s4Num: "Instant", s4Lab: "Shelf Lookup",
+        link: "#ai-librarian"
+      },
+      {
+        tag: "Module 06 • Settings & Badges",
+        title: "Personalize your reading room and backups.",
+        desc: "Earn reader milestone badges automatically, switch between Light and Dark themes, and export local backups.",
+        cardTitle: "Profile & Data",
+        badge: "Local-First",
+        sub: "Full JSON & collection data export included",
+        s1Num: "6", s1Lab: "Badges Unlocked",
+        s2Num: "2", s2Lab: "Reading Themes",
+        s3Num: "7", s3Lab: "Currencies",
+        s4Num: "1-Click", s4Lab: "Backup Export",
+        link: "#settings"
+      }
+    ];
+
+    function switchModuleTab(idx, btn) {
+      document.querySelectorAll('.module-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const m = appModules[idx];
+      document.getElementById('modTag').textContent = m.tag;
+      document.getElementById('modTitle').textContent = m.title;
+      document.getElementById('modDesc').textContent = m.desc;
+      document.getElementById('modCardTitle').textContent = m.cardTitle;
+      document.getElementById('modCardBadge').textContent = m.badge;
+      document.getElementById('modCardSub').textContent = m.sub;
+      document.getElementById('modStat1Num').textContent = m.s1Num;
+      document.getElementById('modStat1Label').textContent = m.s1Lab;
+      document.getElementById('modStat2Num').textContent = m.s2Num;
+      document.getElementById('modStat2Label').textContent = m.s2Lab;
+      document.getElementById('modStat3Num').textContent = m.s3Num;
+      document.getElementById('modStat3Label').textContent = m.s3Lab;
+      document.getElementById('modStat4Num').textContent = m.s4Num;
+      document.getElementById('modStat4Label').textContent = m.s4Lab;
+      document.getElementById('modCta').setAttribute('href', m.link);
+    }
+
+    // 3. MODULE 2: ALL YOUR BOOKS CATALOG CARDS
+    const catalogBooks = [
+      {
+        title: "The Secret History",
+        author: "Donna Tartt • Classic Literature",
+        format: "First Edition Hardcover",
+        rating: "★ 5.0 / 5.0",
+        quote: "\"A tragic, spellbinding story of aesthetic obsession and collegiate seclusion.\"",
+        loc: "Study Bookshelf • Row 2",
+        price: "Paid: €65.00",
+        color: "#3A2618",
+        status: "Read"
+      },
+      {
+        title: "Heretics of Dune",
+        author: "Frank Herbert • Science Fiction",
+        format: "Centipede Press Fine Edition",
+        rating: "★ 5.0 / 5.0",
+        quote: "\"Prized collector edition bound in full cloth with custom slipcase.\"",
+        loc: "Study Bookshelf • Row 1",
+        price: "Paid: €140.00",
+        color: "#6A0715",
+        status: "Read"
+      },
+      {
+        title: "Piranesi",
+        author: "Susanna Clarke • Fantasy",
+        format: "Hardcover Edition",
+        rating: "★ 5.0 / 5.0",
+        quote: "\"The Beauty of the House is immeasurable; its Kindness infinite.\"",
+        loc: "Study Bookshelf • Row 2",
+        price: "Paid: €28.00",
+        color: "#C2613C",
+        status: "Currently Reading"
+      },
+      {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien • Classic Fantasy",
+        format: "Illustrated Hardcover",
+        rating: "★ 5.0 / 5.0",
+        quote: "\"In a hole in the ground there lived a hobbit. A timeless comfort read.\"",
+        loc: "Living Room • Row 1",
+        price: "Paid: €45.00",
+        color: "#2D5A27",
+        status: "Read"
+      },
+      {
+        title: "1984",
+        author: "George Orwell • Classic Literature",
+        format: "Clothbound Classic",
+        rating: "★ 4.8 / 5.0",
+        quote: "\"Essential twentieth-century dystopian classic on the study shelf.\"",
+        loc: "Study Bookshelf • Row 2",
+        price: "Paid: €26.00",
+        color: "#6B655D",
+        status: "Read"
+      },
+      {
+        title: "Pride and Prejudice",
+        author: "Jane Austen • Classic Literature",
+        format: "Fine Press Edition",
+        rating: "★ 5.0 / 5.0",
+        quote: "\"Queued on the study shelf for next weekend's reading pass.\"",
+        loc: "Study Bookshelf • Row 2",
+        price: "Paid: €52.00",
+        color: "#4D050F",
+        status: "Unread"
+      }
+    ];
+
+    let activeCatalogIdx = 0;
+
+    function renderCatalog() {
+      const grid = document.getElementById('catalogGrid');
+      grid.innerHTML = '';
+      catalogBooks.forEach((b, idx) => {
+        const card = document.createElement('div');
+        card.className = `book-cover-card ${idx === activeCatalogIdx ? 'active' : ''}`;
+        card.onclick = () => selectCatalogBook(idx);
+        card.innerHTML = `
+          <div class="cover-art-box" style="background: ${b.color};">
+            <span class="cover-status-badge">${b.status}</span>
+            <div>
+              <strong style="font-size: 0.9rem; display: block; line-height: 1.2;">${b.title}</strong>
+              <span style="font-size: 0.72rem; opacity: 0.85;">${b.author.split(' • ')[0]}</span>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 700; color: var(--ink-umber);">
+            <span>${b.rating}</span>
+            <span>Inspect →</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectCatalogBook(idx) {
+      activeCatalogIdx = idx;
+      const b = catalogBooks[idx];
+      document.getElementById('noteFormatTag').textContent = b.format;
+      document.getElementById('noteRatingBadge').textContent = b.rating;
+      document.getElementById('noteBookTitle').textContent = b.title;
+      document.getElementById('noteBookAuthor').textContent = b.author;
+      document.getElementById('noteQuoteText').textContent = b.quote;
+      document.getElementById('noteLocation').textContent = b.loc;
+      document.getElementById('notePrice').textContent = b.price;
+      renderCatalog();
+    }
+
+    // 4. MODULE 3: INTERACTIVE DIGITAL SHELF
+    const brandPalette = [
+      { name: "Burgundy", hex: "#6A0715" },
+      { name: "Olive Green", hex: "#2D5A27" },
+      { name: "Warm Terracotta", hex: "#C2613C" },
+      { name: "Dark Wood", hex: "#3A2618" },
+      { name: "Warm Grey", hex: "#6B655D" },
+      { name: "Deep Wine", hex: "#4D050F" }
+    ];
+
+    let shelfBooks = [
+      { id: 0, title: "Dune", author: "Frank Herbert", status: "Read", location: "Study • Row 2", rating: 5, heightPx: 220, widthPx: 50, color: "#6A0715" },
+      { id: 1, title: "The Hobbit", author: "J.R.R. Tolkien", status: "Read", location: "Study • Row 2", rating: 5, heightPx: 195, widthPx: 44, color: "#2D5A27" },
+      { id: 2, title: "1984", author: "George Orwell", status: "Read", location: "Study • Row 2", rating: 4, heightPx: 180, widthPx: 38, color: "#3A2618" },
+      { id: 3, title: "Piranesi", author: "Susanna Clarke", status: "Currently Reading", location: "Study • Row 2", rating: 5, heightPx: 190, widthPx: 42, color: "#C2613C" },
+      { id: 4, title: "The Great Gatsby", author: "F. Scott Fitzgerald", status: "Unread", location: "Study • Row 2", rating: 4, heightPx: 175, widthPx: 36, color: "#6B655D" },
+      { id: 5, title: "The Secret History", author: "Donna Tartt", status: "Currently Reading", location: "Study • Row 2", rating: 5, heightPx: 200, widthPx: 46, color: "#4D050F" }
+    ];
+
+    let selectedId = 0;
+    let activeFilter = 'all';
+    let draggedIdx = null;
+
+    function matchesFilter(book) {
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'five-star') return book.rating === 5;
+      if (activeFilter === 'unread') return book.status === 'Unread';
+      if (activeFilter === 'reading') return book.status === 'Currently Reading';
+      return true;
+    }
+
+    function renderShelf() {
+      const stage = document.getElementById('spinesStage');
+      stage.innerHTML = '';
+
+      shelfBooks.forEach((book, idx) => {
+        const spine = document.createElement('div');
+        const isSelected = book.id === selectedId;
+        const isVisible = matchesFilter(book);
+
+        spine.className = `book-spine ${isSelected ? 'selected' : ''} ${!isVisible ? 'dimmed' : ''}`;
+        spine.draggable = true;
+        spine.style.height = `${book.heightPx}px`;
+        spine.style.width = `${book.widthPx}px`;
+        spine.style.backgroundColor = book.color;
+
+        spine.innerHTML = `
+          <span class="spine-title">${book.title}</span>
+          <span class="spine-stars">★${book.rating}</span>
+        `;
+
+        spine.onclick = () => {
+          selectedId = book.id;
+          renderShelf();
+        };
+
+        spine.addEventListener('dragstart', (e) => {
+          draggedIdx = idx;
+          e.dataTransfer.effectAllowed = 'move';
+        });
+
+        spine.addEventListener('dragover', (e) => e.preventDefault());
+
+        spine.addEventListener('drop', (e) => {
+          e.preventDefault();
+          if (draggedIdx !== null && draggedIdx !== idx) {
+            const moved = shelfBooks.splice(draggedIdx, 1)[0];
+            shelfBooks.splice(idx, 0, moved);
+            renderShelf();
+          }
+        });
+
+        // Mobile Touch Reorder
+        let touchTimer = null;
+        let isDragging = false;
+        spine.addEventListener('touchstart', () => {
+          touchTimer = setTimeout(() => { isDragging = true; draggedIdx = idx; }, 150);
+        }, { passive: true });
+
+        spine.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          e.preventDefault();
+        }, { passive: false });
+
+        spine.addEventListener('touchend', (e) => {
+          clearTimeout(touchTimer);
+          if (!isDragging) return;
+          isDragging = false;
+          const touch = e.changedTouches[0];
+          const target = document.elementFromPoint(touch.clientX, touch.clientY);
+          const targetSpine = target?.closest('.book-spine');
+          if (targetSpine && targetSpine !== spine) {
+            const targetIdx = Array.from(targetSpine.parentNode.children).indexOf(targetSpine);
+            if (targetIdx > -1) {
+              const moved = shelfBooks.splice(idx, 1)[0];
+              shelfBooks.splice(targetIdx, 0, moved);
+              renderShelf();
+            }
+          }
+          draggedIdx = null;
+        });
+
+        stage.appendChild(spine);
+      });
+
+      updateEditorPanel();
+    }
+
+    function updateEditorPanel() {
+      const book = shelfBooks.find(b => b.id === selectedId);
+      if (!book) return;
+
+      document.getElementById('inspTitle').textContent = book.title;
+      document.getElementById('inspAuthor').textContent = book.author;
+      document.getElementById('inspLocation').textContent = book.location;
+      document.getElementById('inspStatus').textContent = book.status;
+      document.getElementById('inspStarLabel').textContent = `${book.rating} / 5 Stars`;
+
+      const starBtns = document.querySelectorAll('#starRow .star-btn');
+      starBtns.forEach((btn, i) => btn.classList.toggle('filled', i < book.rating));
+
+      const swatchContainer = document.getElementById('colorSwatches');
+      swatchContainer.innerHTML = '';
+      brandPalette.forEach(swatch => {
+        const btn = document.createElement('button');
+        btn.className = `swatch-btn ${book.color.toUpperCase() === swatch.hex ? 'active' : ''}`;
+        btn.style.backgroundColor = swatch.hex;
+        btn.title = swatch.name;
+        btn.onclick = () => {
+          book.color = swatch.hex;
+          renderShelf();
+        };
+        swatchContainer.appendChild(btn);
+      });
+    }
+
+    function setRating(stars) {
+      const book = shelfBooks.find(b => b.id === selectedId);
+      if (book) {
+        book.rating = stars;
+        renderShelf();
+      }
+    }
+
+    function filterShelf(mode, btn) {
+      activeFilter = mode;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderShelf();
+    }
+
+    // 6. MODULE 5: AI LIBRARIAN INQUIRY CHIPS
+    const librarianDialogues = [
+      {
+        prompt: "Locate moody, atmospheric novels resting on my shelves.",
+        reply: "Hello, reader. Looking across your 14 listed books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes."
+      },
+      {
+        prompt: "Draw a recommendation matched to my recent reading notes.",
+        reply: "Based on your note praising the collegiate seclusion of <em>The Secret History</em>, I recommend picking up your unread Fine Press copy of <strong>Pride and Prejudice</strong> on <strong>Study Bookcase 1, Row 2</strong>, or revisiting your annotated copy of <strong>1984</strong>."
+      },
+      {
+        prompt: "Where is my copy of Heretics of Dune located?",
+        reply: "Your Centipede Press Fine Edition of <strong>Heretics of Dune</strong> by Frank Herbert (valued at €140.00) is resting on <strong>Main Study Bookcase 1, Row 1</strong>."
+      },
+      {
+        prompt: "Which unread books are waiting on my physical shelves?",
+        reply: "You currently have <strong>1 unread book</strong> resting on your active study shelf: <strong>The Great Gatsby</strong> by F. Scott Fitzgerald (Study Bookcase 1, Row 2), plus 2 newly added books waiting to be shelved."
+      }
+    ];
+
+    function askLibrarian(idx, btn) {
+      document.querySelectorAll('.inquiry-chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('aiUserPrompt').textContent = librarianDialogues[idx].prompt;
+      document.getElementById('aiLibrarianReply').innerHTML = librarianDialogues[idx].reply;
+    }
+
+    // 7. MODULE 4: CURRENCY SWITCHER
+    let currentCurrency = { code: 'EUR', symbol: '€', rate: 1 };
+
+    function formatMoney(eur) {
+      const val = eur * currentCurrency.rate;
+      if (currentCurrency.code === 'JPY') {
+        return `${currentCurrency.symbol}${Math.round(val).toLocaleString()}`;
+      }
+      return `${currentCurrency.symbol}${val.toFixed(2)}`;
+    }
+
+    function switchCurrency(code, symbol, rate, btn) {
+      currentCurrency = { code, symbol, rate };
+      document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.getElementById('valTotal').textContent = formatMoney(596.30);
+      document.getElementById('valAvg').textContent = formatMoney(42.59);
+      document.getElementById('valWishlist').textContent = formatMoney(85.00);
+      document.getElementById('valPrized').textContent = formatMoney(140.00);
+      document.getElementById('valFormat1').textContent = formatMoney(298.76);
+      document.getElementById('valFormat2').textContent = formatMoney(198.22);
+      document.getElementById('valFormat3').textContent = formatMoney(99.32);
+    }
+
+    // 8. MODULE 6: LIVE THEME SWITCHER (PARCHMENT <-> MIDNIGHT)
+    function setPageTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('btnThemeLight').classList.toggle('active', theme === 'parchment');
+      document.getElementById('btnThemeDark').classList.toggle('active', theme === 'midnight');
+    }
+
+    // 9. MOBILE SCROLL-ACTIVATED STEPS
+    const stepCards = document.querySelectorAll('.step-card');
+    if (window.matchMedia("(hover: none)").matches) {
+      const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stepCards.forEach(card => card.classList.remove('is-active'));
+            entry.target.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+      stepCards.forEach(card => stepObserver.observe(card));
+    }
+
+    // Initialize views
+    renderCatalog();
+    renderShelf();
+  </script>
+</body>
+</html>
