@@ -15,7 +15,8 @@
   <meta property="og:url" content="https://mybrarian.com/" />
   <meta property="og:title" content="Mybrarian | Organize your personal library in one place." />
   <meta property="og:description" content="Organize your physical books, arrange drag-and-drop digital shelves, track your collection budget, and ask your private AI Librarian." />
-  <meta property="og:image" content="https://mybrarian.com/og-image.png" />
+  <meta property="og:image" content="https://mybrarian.com/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Mybrarian - Organize your personal library in one place." />
@@ -24,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mybrarian | Personal Library & Digital Bookshelves" />
   <meta name="twitter:description" content="Organize your physical books, arrange drag-and-drop digital shelves, track your collection budget, and ask your private AI Librarian." />
-  <meta name="twitter:image" content="https://mybrarian.com/og-image.png" />
+  <meta name="twitter:image" content="https://mybrarian.com/og-image.jpg" />
 
   <!-- Inline SVG Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236A0715'/%3E%3Cpath d='M24 26c10 1 19 5 26 13 7-8 16-12 26-13v42c-10 1-19 4-26 11-7-7-16-10-26-11V26z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
@@ -1397,25 +1398,25 @@
             <div class="pop-floating-card">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <strong style="font-size: 0.92rem;" id="modCardTitle">Reading Study Overview</strong>
-                <span class="status-pill" id="modCardBadge">2026 Goal: 8%</span>
+                <span class="status-pill" id="modCardBadge">Yearly Reading Goal</span>
               </div>
-              <p style="font-size: 0.84rem; color: var(--ink-umber);" id="modCardSub">Annual Target: 2 of 25 Books Completed</p>
+              <p style="font-size: 0.84rem; color: var(--ink-umber);" id="modCardSub">Set an annual target and follow your progress</p>
 
               <div class="vitals-mini-grid">
                 <div class="vital-mini-item">
-                  <div class="vital-mini-num" id="modStat1Num">14</div>
-                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat1Label">Books Listed</div>
+                  <div class="vital-mini-num" id="modStat1Num">All</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat1Label">Books Cataloged</div>
                 </div>
                 <div class="vital-mini-item">
-                  <div class="vital-mini-num" id="modStat2Num">12 / 14</div>
-                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat2Label">Shelved (2 Staging)</div>
+                  <div class="vital-mini-num" id="modStat2Num">Shelved</div>
+                  <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat2Label">Or Waiting in Staging</div>
                 </div>
                 <div class="vital-mini-item">
-                  <div class="vital-mini-num" id="modStat3Num">2</div>
+                  <div class="vital-mini-num" id="modStat3Num">Now</div>
                   <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat3Label">Currently Reading</div>
                 </div>
                 <div class="vital-mini-item">
-                  <div class="vital-mini-num" id="modStat4Num">€596.30</div>
+                  <div class="vital-mini-num" id="modStat4Num">Total</div>
                   <div style="font-size: 0.78rem; color: var(--ink-umber); font-weight: 600;" id="modStat4Label">Collection Value</div>
                 </div>
               </div>
@@ -1483,7 +1484,7 @@
             </div>
 
             <div class="filter-group">
-              <button class="filter-btn active" onclick="filterShelf('all', this)">All Books (6)</button>
+              <button class="filter-btn active" onclick="filterShelf('all', this)">All Books</button>
               <button class="filter-btn" onclick="filterShelf('five-star', this)">★ 5-Star Favorites</button>
               <button class="filter-btn" onclick="filterShelf('unread', this)">Unread</button>
               <button class="filter-btn" onclick="filterShelf('reading', this)">Currently Reading</button>
@@ -1493,7 +1494,7 @@
           <div class="shelf-layout">
             <div class="clean-bookcase">
               <div class="bookcase-hint">
-                <span>12 Shelved • 2 Staging</span>
+                <span>Shelved • Staging</span>
                 <span>Drag or tap spines</span>
               </div>
 
@@ -1540,68 +1541,6 @@
       </div>
     </section>
 
-    <!-- 5. MODULE 5: AI LIBRARIAN -->
-    <section id="ai-librarian">
-      <div class="container">
-        <div class="section-header">
-          <span class="pill-tag">Module 05 • Private AI Librarian</span>
-          <h2 class="section-title">Grounded strictly in the books you own.</h2>
-          <p class="section-subtitle">
-            Your AI Librarian indexes your 14 volumes, 2 bookcases, and personal reading notes. Click any inquiry chip below to ask a question.
-          </p>
-        </div>
-
-        <div class="librarian-card">
-          <div class="librarian-topbar">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
-                <use href="#mybrarian-icon" />
-              </svg>
-              <div>
-                <strong style="font-size: 0.96rem; display: block;">AI Librarian</strong>
-                <span style="font-size: 0.8rem; color: var(--ink-umber);">14 Books Listed • 2 Bookcases • Grounded Local Index</span>
-              </div>
-            </div>
-            <span class="status-pill">Active Orientation</span>
-          </div>
-
-          <div class="inquiry-chips">
-            <button class="inquiry-chip-btn active" onclick="askLibrarian(0, this)">
-              <strong>Dark Gothic Fiction</strong>
-              <span>Locate moody, atmospheric novels resting on your shelves</span>
-            </button>
-            <button class="inquiry-chip-btn" onclick="askLibrarian(1, this)">
-              <strong>Thematic Recommendation</strong>
-              <span>Draw suggestions matched to your recent reading notes</span>
-            </button>
-            <button class="inquiry-chip-btn" onclick="askLibrarian(2, this)">
-              <strong>Find a Book</strong>
-              <span>Find which bookshelf and row your book is on</span>
-            </button>
-            <button class="inquiry-chip-btn" onclick="askLibrarian(3, this)">
-              <strong>Unread Books</strong>
-              <span>Discover books in your collection waiting to be read</span>
-            </button>
-          </div>
-
-          <div class="librarian-dialogue-box">
-            <div class="user-query-bubble" id="aiUserPrompt">
-              Locate moody, atmospheric novels resting on my shelves.
-            </div>
-
-            <div class="ai-response-row">
-              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
-                <use href="#mybrarian-icon" />
-              </svg>
-              <div class="ai-reply-bubble" id="aiLibrarianReply">
-                Hello, reader. Looking across your 14 listed books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 6. MODULE 4: TREASURY & COLLECTION VALUE -->
     <section id="treasury" style="background: var(--bg-subtle); border-top: 1px solid var(--border-rule); border-bottom: 1px solid var(--border-rule);">
       <div class="container">
@@ -1617,7 +1556,7 @@
           <div class="budget-topbar">
             <div>
               <h3 style="font-size: 1.25rem; font-weight: 800;">Collection & Book Purchases</h3>
-              <p style="font-size: 0.88rem; color: var(--ink-umber);">Across 14 listed physical books (12 placed, 2 waiting to be shelved)</p>
+              <p style="font-size: 0.88rem; color: var(--ink-umber);">Across every physical book in your collection</p>
             </div>
 
             <div class="currency-pills">
@@ -1633,7 +1572,7 @@
             <div class="budget-stat">
               <div class="budget-stat-label">Total Capital Invested</div>
               <div class="budget-stat-number" id="valTotal">€596.30</div>
-              <div class="budget-stat-note">Across 14 books</div>
+              <div class="budget-stat-note">Across your whole collection</div>
             </div>
             <div class="budget-stat">
               <div class="budget-stat-label">Average / Volume</div>
@@ -1684,6 +1623,68 @@
       </div>
     </section>
 
+<!-- 5. MODULE 5: AI LIBRARIAN -->
+    <section id="ai-librarian">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">Module 05 • Private AI Librarian</span>
+          <h2 class="section-title">Grounded strictly in the books you own.</h2>
+          <p class="section-subtitle">
+            Your AI Librarian knows your books, your bookcases, and your personal reading notes. Click any inquiry chip below to ask a question.
+          </p>
+        </div>
+
+        <div class="librarian-card">
+          <div class="librarian-topbar">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
+                <use href="#mybrarian-icon" />
+              </svg>
+              <div>
+                <strong style="font-size: 0.96rem; display: block;">AI Librarian</strong>
+                <span style="font-size: 0.8rem; color: var(--ink-umber);">Your Books • Your Bookcases • Grounded in Your Library</span>
+              </div>
+            </div>
+            <span class="status-pill">Active Orientation</span>
+          </div>
+
+          <div class="inquiry-chips">
+            <button class="inquiry-chip-btn active" onclick="askLibrarian(0, this)">
+              <strong>Dark Gothic Fiction</strong>
+              <span>Locate moody, atmospheric novels resting on your shelves</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(1, this)">
+              <strong>Thematic Recommendation</strong>
+              <span>Draw suggestions matched to your recent reading notes</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(2, this)">
+              <strong>Find a Book</strong>
+              <span>Find which bookshelf and row your book is on</span>
+            </button>
+            <button class="inquiry-chip-btn" onclick="askLibrarian(3, this)">
+              <strong>Unread Books</strong>
+              <span>Discover books in your collection waiting to be read</span>
+            </button>
+          </div>
+
+          <div class="librarian-dialogue-box">
+            <div class="user-query-bubble" id="aiUserPrompt">
+              Locate moody, atmospheric novels resting on my shelves.
+            </div>
+
+            <div class="ai-response-row">
+              <svg class="ai-avatar-svg" viewBox="0 0 1000 1000">
+                <use href="#mybrarian-icon" />
+              </svg>
+              <div class="ai-reply-bubble" id="aiLibrarianReply">
+                Hello, reader. Looking across your books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <!-- 7. MODULE 6: PROFILE BADGES & ATMOSPHERE THEME SWITCHER -->
     <section id="settings">
       <div class="container">
@@ -1854,12 +1855,12 @@
         title: "Your personal reading study at a glance.",
         desc: "See how many books are indexed across your bookcases, track your active reading pass, and follow your annual reading goal at your own pace.",
         cardTitle: "Reading Study Overview",
-        badge: "2026 Goal: 8%",
-        sub: "Annual Target: 2 of 25 Books Completed",
-        s1Num: "14", s1Lab: "Books Listed",
-        s2Num: "12 / 14", s2Lab: "Shelved (2 Staging)",
-        s3Num: "2", s3Lab: "Currently Reading",
-        s4Num: "€596.30", s4Lab: "Collection Value",
+        badge: "Yearly Reading Goal",
+        sub: "Set an annual target and follow your progress",
+        s1Num: "All", s1Lab: "Books Cataloged",
+        s2Num: "Shelved", s2Lab: "Or Waiting in Staging",
+        s3Num: "Now", s3Lab: "Currently Reading",
+        s4Num: "Total", s4Lab: "Collection Value",
         link: "#workspace"
       },
       {
@@ -1872,7 +1873,7 @@
         s1Num: "8", s1Lab: "5-Star Masterpieces",
         s2Num: "4", s2Lab: "4-Star Distinguished",
         s3Num: "2", s3Lab: "Awaiting Rating",
-        s4Num: "14", s4Lab: "Total Bound Copies",
+        s4Num: "All", s4Lab: "Books Cataloged",
         link: "#books-catalog"
       },
       {
@@ -1880,10 +1881,10 @@
         title: "A drag-and-drop twin of your real bookcases.",
         desc: "Place books onto virtual shelves that match your furniture. Reorder spines by hand, customize spine colors, and filter shelves instantly.",
         cardTitle: "Bookcase Occupancy",
-        badge: "2 Bookcases",
+        badge: "Your Bookcases",
         sub: "Main Study & Living Room Shelves",
-        s1Num: "12", s1Lab: "Placed on Shelves",
-        s2Num: "2", s2Lab: "In Staging Dock",
+        s1Num: "Shelved", s1Lab: "On Your Bookcases",
+        s2Num: "New", s2Lab: "In Staging Dock",
         s3Num: "6", s3Lab: "Spine Cloth Colors",
         s4Num: "100%", s4Lab: "Custom Order",
         link: "#digital-shelves"
@@ -1906,11 +1907,11 @@
         title: "Private intelligence grounded in your books.",
         desc: "Ask natural questions to locate any book on your shelves, find dark gothic novels you own, or get recommendations matched to your notes.",
         cardTitle: "Library Overview",
-        badge: "Zero Hallucinations",
-        sub: "Strictly grounded in your 14 listed books",
-        s1Num: "14", s1Lab: "Books Listed",
-        s2Num: "2", s2Lab: "Bookcases Mapped",
-        s3Num: "1", s3Lab: "Unread Waiting",
+        badge: "Grounded in Your Library",
+        sub: "Strictly grounded in your own library",
+        s1Num: "All", s1Lab: "Your Books Indexed",
+        s2Num: "All", s2Lab: "Bookcases Mapped",
+        s3Num: "Unread", s3Lab: "Books Waiting",
         s4Num: "Instant", s4Lab: "Shelf Lookup",
         link: "#ai-librarian"
       },
@@ -2214,7 +2215,7 @@
     const librarianDialogues = [
       {
         prompt: "Locate moody, atmospheric novels resting on my shelves.",
-        reply: "Hello, reader. Looking across your 14 listed books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes."
+        reply: "Hello, reader. Looking across your listed books, <strong>The Secret History</strong> by Donna Tartt and <strong>Piranesi</strong> by Susanna Clarke match this atmosphere best. Both are currently shelved on <strong>Main Study Bookcase 1, Row 2</strong>, and both carry a 5.0-star rating in your notes."
       },
       {
         prompt: "Draw a recommendation matched to my recent reading notes.",
@@ -2226,7 +2227,7 @@
       },
       {
         prompt: "Which unread books are waiting on my physical shelves?",
-        reply: "You currently have <strong>1 unread book</strong> resting on your active study shelf: <strong>The Great Gatsby</strong> by F. Scott Fitzgerald (Study Bookcase 1, Row 2), plus 2 newly added books waiting to be shelved."
+        reply: "You currently have <strong>1 unread book</strong> resting on your active study shelf: <strong>The Great Gatsby</strong> by F. Scott Fitzgerald (Study Bookcase 1, Row 2), plus any newly added books waiting to be shelved."
       }
     ];
 
