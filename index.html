@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://mybrarian.com/og-image.jpg" />
 
   <!-- Inline SVG Favicon matching the Mybrarian Brand Mark -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%236A0715%22%2F%3E%3Cpath%20d%3D%22M23%2022c11%201%2020%205%2025.5%2013V71c-6-6-15-9-25.5-10V22z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M77%2022c-11%201-20%205-25.5%2013V71c6-6%2015-9%2025.5-10V22z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M17%2026h3.5v37c10%201%2019%204%2025.5%2010v3.5C39%2070%2029%2067%2017%2066V26z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M83%2026h-3.5v37c-10%201-19%204-25.5%2010v3.5C61%2070%2071%2067%2083%2066V26z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M12%2031h3v38c11%201%2021%204%2029%2010v3c-9-6-20-9-32-10V31z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M88%2031h-3v38c-11%201-21%204-29%2010v3c9-6%2020-9%2032-10V31z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M44.5%2072h11v18l-5.5-5-5.5%205V72z%22%20fill%3D%22%23FFFFFF%22%3F%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%236A0715%22%2F%3E%3Cpath%20d%3D%22M23%2022c11%201%2020%205%2025.5%2013V71c-6-6-15-9-25.5-10V22z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M77%2022c-11%201-20%205-25.5%2013V71c6-6%2015-9%2025.5-10V22z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M17%2026h3.5v37c10%201%2019%204%2025.5%2010v3.5C39%2070%2029%2067%2017%2066V26z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M83%2026h-3.5v37c-10%201-19%204-25.5%2010v3.5C61%2070%2071%2067%2083%2066V26z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M12%2031h3v38c11%201%2021%204%2029%2010v3c-9-6-20-9-32-10V31z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M88%2031h-3v38c-11%201-21%204-29%2010v3c9-6%2020-9%2032-10V31z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Cpath%20d%3D%22M44.5%2072h11v18l-5.5-5-5.5%205V72z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E" />
 
   <!-- Structured Data (JSON-LD for Search Engines) -->
   <script type="application/ld+json">
@@ -178,6 +178,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100%;
     }
 
     body {
@@ -186,7 +188,9 @@
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.55;
       overflow-x: hidden;
+      max-width: 100%;
       width: 100%;
+      position: relative;
       transition: background-color 0.3s ease, color 0.3s ease;
       -webkit-font-smoothing: antialiased;
     }
@@ -323,8 +327,9 @@
        1. HERO: 2-COLUMN HOOK + NON-OVERLAPPING 3D BOOK + MODULE DOCK
        ========================================================================== */
     .hero-section {
-      padding: 118px 0 64px;
+      padding: 112px 0 64px;
       perspective: 1800px;
+      overflow-x: clip;
     }
 
     .hero-split {
@@ -1662,7 +1667,44 @@
       .settings-grid,
       .steps-grid,
       .pricing-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .pop-stage,
+      .shelf-card,
+      .budget-card,
+      .librarian-card,
+      .badges-card,
+      .pricing-card {
+        max-width: 100%;
+      }
+      .pop-stage {
+        padding: 20px 16px;
+        gap: 20px;
+      }
+      .pop-main-card,
+      .pop-floating-card {
+        padding: 20px 16px;
+        transform: none;
+      }
+      .shelf-card,
+      .budget-card,
+      .badges-card,
+      .pricing-card {
+        padding: 22px 16px;
+      }
+      .inquiry-chips,
+      .librarian-dialogue-box,
+      .librarian-topbar {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .ai-response-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .ai-reply-bubble {
+        max-width: 100%;
+        width: 100%;
       }
       .hero-copy-col {
         text-align: center;
@@ -1685,26 +1727,88 @@
         transform: translateX(0);
       }
       .book-stage.is-open .book-front-cover {
-        transform: rotateY(-145deg);
+        transform: rotateY(-115deg);
       }
     }
 
     @media (max-width: 600px) {
+      .container {
+        padding: 0 16px;
+      }
+      .nav-inner {
+        height: 70px;
+        gap: 8px;
+      }
       .brand-logo-wrap {
-        height: 46px;
+        height: 40px;
       }
       .brand-logo-svg {
-        height: 46px;
-        width: 128px;
+        height: 40px;
+        width: 112px;
+      }
+      .navbar .btn-dropbox {
+        padding: 9px 14px;
+        font-size: 0.8rem;
       }
       .book-stage {
-        width: 100%;
-        max-width: 300px;
-        height: 410px;
+        width: 260px;
+        max-width: 82vw;
+        height: 380px;
+      }
+      .book-stage.is-open .book-front-cover {
+        transform: rotateY(-102deg);
+      }
+      .covers-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
       .budget-grid,
-      .badge-pills-wrap {
-        grid-template-columns: 1fr;
+      .badge-pills-wrap,
+      .vitals-mini-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .spines-row {
+        min-width: 310px;
+        justify-content: flex-start;
+        padding: 0 8px;
+      }
+      .book-cover-card,
+      .shelf-card,
+      .budget-card,
+      .librarian-card,
+      .badges-card,
+      .step-card,
+      .faq-item,
+      .pricing-card,
+      .pop-main-card,
+      .pop-stage,
+      .book-editor-panel,
+      .editor-control-box,
+      .budget-stat,
+      .format-box,
+      .vital-mini-item,
+      .reader-badge-item,
+      .inquiry-chip-btn {
+        border: 1.5px solid #D5CEC0;
+        box-shadow: 0 2px 10px rgba(28, 25, 23, 0.06);
+      }
+      [data-theme="midnight"] .book-cover-card,
+      [data-theme="midnight"] .shelf-card,
+      [data-theme="midnight"] .budget-card,
+      [data-theme="midnight"] .librarian-card,
+      [data-theme="midnight"] .badges-card,
+      [data-theme="midnight"] .step-card,
+      [data-theme="midnight"] .faq-item,
+      [data-theme="midnight"] .pricing-card,
+      [data-theme="midnight"] .pop-main-card,
+      [data-theme="midnight"] .pop-stage,
+      [data-theme="midnight"] .book-editor-panel,
+      [data-theme="midnight"] .editor-control-box,
+      [data-theme="midnight"] .budget-stat,
+      [data-theme="midnight"] .format-box,
+      [data-theme="midnight"] .vital-mini-item,
+      [data-theme="midnight"] .reader-badge-item,
+      [data-theme="midnight"] .inquiry-chip-btn {
+        border-color: #463B34;
       }
     }
   </style>
